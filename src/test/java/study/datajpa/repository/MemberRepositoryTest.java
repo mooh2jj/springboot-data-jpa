@@ -138,6 +138,17 @@ class MemberRepositoryTest {
 
     }
 
+    @Test
+    public void resultType() {
+        Member m1 = new Member("AAA", 10);
+        Member m2 = new Member("BBB", 15);
+        memberRepository.save(m1);
+        memberRepository.save(m2);
+
+        Optional<Member> findMember = memberRepository.findOptionalByUsername("dfdfdf");
+        System.out.println("findMember: "+ findMember); // Optional.empty
+    }
+
 
 
 
