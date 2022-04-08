@@ -11,6 +11,12 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     List<Member> findByUsernameAndAgeGreaterThan(String username, int age);
 
-    @Query(name = "Member.findByUsername")
+    // NamedQuery
+//    @Query(name = "Member.findByUsername")    이거 없어도 NamedQuery 오류 안생김
     List<Member> findByUsername(@Param("username") String username);
+
+    // @Query -> 복잡한 쿼리는 이걸로 해결함!
+    @Query("select m from Member m where m.username = :username and m.age = :age")
+    List<Member> findUser(@Param("username") String username, @Param("age") int age);
+
 }
