@@ -22,7 +22,7 @@ public class MemberController {
     }
 
     // 도메인 클래스 컨버터 엔티티 파라미터로 받기, 단순 조회용 : but, 권장하지 않는 방법법
-    @GtMapping("/members2/{id}")
+    @GetMapping("/members2/{id}")
     public String findMember2(@PathVariable("id") Member member) {
         return member.getUsername();
     }
